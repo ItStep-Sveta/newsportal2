@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">NewsPortal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/about">Про сайт</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/contacts">Контакты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/feedback">Feedback</a>
+          </li>
+
+        </ul>
+        <ul class="navbar-nav navbar-right">
+          <li class="nav-item">
+            <a class="nav-link" href="" style="margin-right: 50px">
+              Привет,
+              <span style="color: lime">
+                {% if user.is_authenticated %}
+                  {{ user.username }}!
+                {% else %}
+                  Гость!
+                {% endif %}
+
+              </span>
+
+            </a>
+          </li>
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/account/sign_in">Вход</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/account/sign_up">Регистрациия</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/account/sign_out">Выход</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/account/profile">Профиль</a>
+            </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+  </nav>

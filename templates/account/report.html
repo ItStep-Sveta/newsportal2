@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    {{ title }}
+
+{% endblock title %}
+
+{% block content %}
+    {% load static %}
+    <div class="content container">
+        <h2>{{ title }}</h2>
+    <hr>
+        <h4 style="color: {{ color }} ">
+            {{ report }}
+        </h4>
+        <!--
+        <h5>
+            {{ login }} <br>
+            {{ pass1 }} <br>
+            {{ pass2 }} <br>
+            {{ email }} <br>
+
+        </h5>
+        -->
+
+    </div>
+    <style>
+        .content {
+            text-align: center;
+            padding-top: 30px;
+        }
+    </style>
+{% endblock content %}
+
+data)
