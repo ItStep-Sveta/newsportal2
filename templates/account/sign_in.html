@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+    {{ title }}
+
+{% endblock title %}
+
+{% block content %}
+    {% load static %}
+    <div class="content container">
+        <h2>{{ title }}</h2>
+    <hr>
+        <form action="/account/sign_in" method ="post">
+
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="login">Login:</label>
+                <input type="text" id="login" name="login" class="form-control" required>
+                <div id="login_mess" class="mess"></div>
+            </div>
+            <div class="form-group">
+                <label for="pass1">Пароль:</label>
+                <input type="password" id="pass1" name="pass1" class="form-control" required>
+                <div id="pass1_mess" class="mess"></div>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="stay" name="stay" value="yes">
+                <label for="Stay">Оставаться в системе</label>
+            </div>
+
+            <p class="text-center pt-4">
+                <br>
+                <input type="submit" id="submit" value="Войти" class="btn btn-success my-btn">
+                <input type="reset" id="reset" value="Сбросить" class="btn btn-danger my-btn">
+            </p>
+        </form>
+    </div>
+    <style>
+        form {
+            width: 400px;
+            text-align: left;
+            border: 1px solid silver;
+            border-radius: 10px;
+            padding: 15px 35px 25px 35px;
+            margin: 15px auto;
+        }
+
+        .content {
+            text-align: center;
+            padding-top: 30px;
+        }
+        .mybtn{
+            width: 120px;
+            border-radius: 10px;
+        }
+    </style>
+{% endblock content %}
+

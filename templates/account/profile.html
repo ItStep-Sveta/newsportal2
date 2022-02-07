@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+<div class="main-box container text-center mt-3">
+    <br>
+    <hr>
+    <h2>{{ title }}<h2>
+    <hr>
+    <h4>
+        Пользователь:
+        <span style="color: red">
+            {{ user.username }}
+        </span>
+    </h4>
+</div>
+{% endblock content %}
