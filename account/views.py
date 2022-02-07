@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import  User
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 
@@ -48,5 +48,41 @@ def sign_up(request):
         data['title'] = 'Отчет о регистрации'
 
         return render(request, 'account/report.html', context=data)
+
+
+def sign_in(request):
+    data = dict()
+    if request.method == 'GET':
+        data['title'] = 'Авторизация'
+        return render(request, 'account/sign_in.html', context=data)
+    elif request.method == 'POST':
+        # 1 Poluchenie dannih iz formi avtorizazii:
+        login_x = request.POST.get('login')
+        pass1_x = request.POST.get('pass1')
+
+        # 2 Proverka podlinnosti znachenii login/parol:
+        user = authenticate(request, username=login_x, password=pass1_x)
+        if user is None:
+            data['color'] = 'red'
+            data['report'] = 'Пользователь не найден'
+            data['title'] = 'Отчет об авторизации'
+            return render(request, 'account/report.html', context=data)
+        else:
+            login(request, user)
+            return redirect('/home')
+
+
+def sign_out(request):
+    logout(request)
+    return redirect('/home')
+
+
+def profile(request):
+    data = dict()
+    data['title'] = 'Профиль'
+    return render(request, 'account/profile.html', context=data)
+
+
+
 
 
